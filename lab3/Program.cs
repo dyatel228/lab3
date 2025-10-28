@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -66,7 +66,10 @@ namespace lab3
                         Console.WriteLine("Матрица долгов:");
                         Console.WriteLine(banks);
                         int maxDebtBank = banks.FindBankWithMaxDebt();
-                        Console.WriteLine($"Банк с максимальным долгом: {maxDebtBank + 1}");
+                        if (maxDebtBank != 0)
+                        {
+                            Console.WriteLine($"Банк с максимальным долгом: {maxDebtBank + 1}");
+                        }
                         break;
                     case 3:
                         Console.WriteLine("=== Задание 3 ===");
