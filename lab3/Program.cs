@@ -104,7 +104,6 @@ namespace lab3
                         Console.WriteLine("\n=== Задание 6 ===");
                         FileTasks.CreateSingleNumberFile("single.txt");
                         bool noZero = FileTasks.CheckNoZero("single.txt");
-                        Console.WriteLine("Нет нулей: " + noZero);
                         break;
                     case 7:
                         Console.WriteLine("\n=== Задание 7 ===");
