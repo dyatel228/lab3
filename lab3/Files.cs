@@ -184,11 +184,11 @@ namespace lab3
                     int number = int.Parse(lines[i]);
                     if (number == 0)
                     {
-                        return true;
+                        return false;
                     }
                 }
 
-                return false;
+                return true;
             }
             catch (FileNotFoundException)
             {
