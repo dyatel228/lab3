@@ -1,4 +1,4 @@
-<img width="1354" height="429" alt="image" src="https://github.com/user-attachments/assets/f9abcebd-03f1-475a-89d6-c5813b120355" /># Блажко Иван ИТ-8 Лабораторная работа №1
+# Блажко Иван ИТ-8 Лабораторная работа №1
 ## Задача 1
 ### Текст задачи
 Первый массив, размерностью n х m , заполняется данными, вводимыми с клавиатуры, так что
@@ -150,6 +150,7 @@
 <img width="1323" height="345" alt="image" src="https://github.com/user-attachments/assets/13cba38d-463e-42f7-b1f4-cb737a29b5ad" />
 
 <img width="1343" height="411" alt="image" src="https://github.com/user-attachments/assets/a0818efb-01d1-4cec-9b3d-05f718b6922c" />
+
 
 
 ## Задача 8
