@@ -16,11 +16,14 @@ namespace lab3
                 Random rnd = new Random();
                 int count = 10;
 
+                Console.WriteLine("Содержимое бинарного файла:");
                 for (int i = 0; i < count; i++)
                 {
-                    int number = rnd.Next(-5, 6);
+                    int number = rnd.Next(-10, 11);
                     writer.Write(number);
+                    Console.Write(number + " ");
                 }
+                Console.WriteLine();
 
                 writer.Close();
                 fs.Close();
@@ -292,7 +295,7 @@ namespace lab3
             {
                 CreateTextFile("text.txt");
                 string[] lines = File.ReadAllLines("text.txt");
-                
+
                 string[] tempResult = new string[lines.Length];
                 int count = 0;
 
