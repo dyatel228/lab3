@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -123,14 +123,14 @@ namespace lab3
             {
                 if (hasDebts == false)
                 {
-                    Console.WriteLine("Никто никому не должен. Все долги равны нулю.");
+                    Console.WriteLine("Никто никому не должен.");
                     break;
                 }
                 if (totalDebts[i] > maxDebt)
                 {
                     maxDebt = totalDebts[i];
                     maxDebtBank = i;
-                }
+                }               
             }
 
             return maxDebtBank;
@@ -217,7 +217,7 @@ namespace lab3
             // B^T
             MatrixOperations bTransposed = B.Transpose();
 
-            // B^T * C (МАТРИЧНОЕ умножение)
+            // B^T * C 
             MatrixOperations bTransposedTimesC = MatrixMultiply(bTransposed, C);
 
             // 2*A - B^T * C
