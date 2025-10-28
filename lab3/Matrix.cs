@@ -156,9 +156,6 @@ namespace lab3
 
         public static MatrixOperations operator -(MatrixOperations a, MatrixOperations b)
         {
-            if (a.data.GetLength(0) != b.data.GetLength(0) || a.data.GetLength(1) != b.data.GetLength(1))
-                throw new InvalidOperationException("Матрицы должны быть одного размера для вычитания");
-
             int rows = a.data.GetLength(0);
             int cols = a.data.GetLength(1);
             double[,] result = new double[rows, cols];
@@ -214,10 +211,6 @@ namespace lab3
         // Метод для вычисления выражения: 2*A - B^T * C
         public static MatrixOperations CalculateExpression(MatrixOperations A, MatrixOperations B, MatrixOperations C)
         {
-            // Проверка для матричного умножения: cols(B^T) == rows(C)
-            if (B.data.GetLength(0) != C.data.GetLength(0))
-                throw new InvalidOperationException("Для умножения B^T * C количество столбцов B^T должно равняться количеству строк C");
-
             // 2 * A
             MatrixOperations twoA = 2 * A;
 
