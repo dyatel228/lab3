@@ -21,9 +21,9 @@ namespace lab3
                 {
                     int number = rnd.Next(-10, 11);
                     writer.Write(number);
-                    Console.Write(number + " ");
+                    Console.Write(number + " "); // Выводим числа при записи
                 }
-                Console.WriteLine();
+                Console.WriteLine(); // Переход на новую строку
 
                 writer.Close();
                 fs.Close();
@@ -161,7 +161,7 @@ namespace lab3
 
                 for (int i = 0; i < count; i++)
                 {
-                    int number = rnd.Next(-3, 4);
+                    int number = rnd.Next(-10, 11);
                     writer.WriteLine(number);
                 }
 
@@ -188,7 +188,7 @@ namespace lab3
                     }
                 }
 
-                return true;
+                return false;
             }
             catch (FileNotFoundException)
             {
