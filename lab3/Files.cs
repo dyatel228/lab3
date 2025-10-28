@@ -21,9 +21,9 @@ namespace lab3
                 {
                     int number = rnd.Next(-10, 11);
                     writer.Write(number);
-                    Console.Write(number + " "); // Выводим числа при записи
+                    Console.Write(number + " "); 
                 }
-                Console.WriteLine(); // Переход на новую строку
+                Console.WriteLine();
 
                 writer.Close();
                 fs.Close();
