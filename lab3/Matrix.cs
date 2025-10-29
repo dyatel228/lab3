@@ -121,7 +121,7 @@ namespace lab3
         }
 
         // Задание 1.1: Заполнение с клавиатуры по строкам
-        private void FillFromKeyboard(int n, int m)
+        public void FillFromKeyboard(int n, int m)
         {
             Console.WriteLine($"Введите элементы массива {n}x{m} по строкам:");
             for (int i = 0; i < n; i++)
@@ -134,7 +134,7 @@ namespace lab3
         }
 
         // Задание 1.2: Заполнение второго массива
-        private void FillSecondArray(int n)
+        public void FillSecondArray(int n)
         {
             Random rand = new Random();
             for (int i = 0; i < n; i++)
@@ -154,7 +154,7 @@ namespace lab3
         }
 
         // Задание 1.3: Заполнение третьего массива
-        private void TriangleMatrix(int n)
+        public void TriangleMatrix(int n)
         {
             Console.WriteLine($"Введите элементы выше главной диагонали для массива {n}x{n}:");
             for (int i = 0; i < n; i++)
