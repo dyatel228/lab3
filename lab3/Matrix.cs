@@ -19,14 +19,12 @@ namespace lab3
 
         public MatrixOperations(int n, bool isSecondArray)
         {
-
             data = new double[n, n];
             FillSecondArray(n);
         }
 
         public MatrixOperations(int n, string third)
         {
-
             data = new double[n, n];
             TriangleMatrix(n);
         }
@@ -35,6 +33,91 @@ namespace lab3
         public MatrixOperations(double[,] array)
         {
             data = (double[,])array.Clone();
+        }
+        private double ReadDouble(string prompt)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write(prompt);
+                    double result = Convert.ToDouble(Console.ReadLine());
+                    return result;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка! Введите число.");
+                }
+            }
+        }
+
+        private double ReadPositiveDouble(string prompt)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write(prompt);
+                    double result = Convert.ToDouble(Console.ReadLine());
+                    if (result >= 0)
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка! Введите неотрицательное число.");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка! Введите число.");
+                }
+            }
+        }
+
+        private int ReadInt(string prompt)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write(prompt);
+                    int result = Convert.ToInt32(Console.ReadLine());
+                    return result;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка! Введите целое число.");
+                }
+            }
+        }
+
+        private int ReadPositiveInt(string prompt)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write(prompt);
+                    int result = Convert.ToInt32(Console.ReadLine());
+                    if (result > 0)
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка! Введите положительное целое число.");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка! Введите целое число.");
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("Ошибка! Число слишком большое или слишком маленькое.");
+                }
+            }
         }
 
         // Задание 1.1: Заполнение с клавиатуры по строкам
@@ -45,8 +128,7 @@ namespace lab3
             {
                 for (int j = 0; j < m; j++)
                 {
-                    Console.Write($"Элемент [{i + 1},{j + 1}]: ");
-                    data[i, j] = Convert.ToDouble(Console.ReadLine());
+                    data[i, j] = ReadDouble($"Элемент [{i + 1},{j + 1}]: ");
                 }
             }
         }
@@ -81,15 +163,13 @@ namespace lab3
                 {
                     if (j > i) // Выше главной диагонали
                     {
-                        Console.Write($"Элемент [{i + 1},{j + 1}]: ");
-                        data[i, j] = Convert.ToDouble(Console.ReadLine());
+                        data[i, j] = ReadDouble($"Элемент [{i + 1},{j + 1}]: ");
                     }
                     else if (j == i) // На главной диагонали
                     {
-                        Console.Write($"Элемент [{i + 1},{j + 1}]: ");
-                        data[i, j] = Convert.ToDouble(Console.ReadLine());
+                        data[i, j] = ReadDouble($"Элемент [{i + 1},{j + 1}]: ");
                     }
-                    else // Ниже главной диагонали - нули
+                    else // Ниже главной диагобли - нули
                     {
                         data[i, j] = 0;
                     }
@@ -103,6 +183,7 @@ namespace lab3
             int banksCount = data.GetLength(0); // Количество банков
             double[] totalDebts = new double[banksCount];
             bool hasDebts = false;
+
             // Суммируем долги каждого банка (по строкам)
             for (int i = 0; i < banksCount; i++)
             {
@@ -114,23 +195,26 @@ namespace lab3
                         hasDebts = true;
                     }
                 }
-                Console.WriteLine($"{i + 1} Банк: {totalDebts[i]}");
+                Console.WriteLine($"Банк {i + 1}: {totalDebts[i]:F2}");
             }
+
+            // Проверяем, есть ли долги
+            if (!hasDebts)
+            {
+                Console.WriteLine("Никто никому не должен.");
+                return -1;
+            }
+
             // Находим банк с максимальным долгом
             int maxDebtBank = 0;
             double maxDebt = totalDebts[0];
             for (int i = 1; i < banksCount; i++)
             {
-                if (hasDebts == false)
-                {
-                    Console.WriteLine("Никто никому не должен.");
-                    break;
-                }
                 if (totalDebts[i] > maxDebt)
                 {
                     maxDebt = totalDebts[i];
                     maxDebtBank = i;
-                }               
+                }
             }
 
             return maxDebtBank;
@@ -217,7 +301,7 @@ namespace lab3
             // B^T
             MatrixOperations bTransposed = B.Transpose();
 
-            // B^T * C 
+            // B^T * C (МАТРИЧНОЕ умножение)
             MatrixOperations bTransposedTimesC = MatrixMultiply(bTransposed, C);
 
             // 2*A - B^T * C
@@ -231,9 +315,6 @@ namespace lab3
             int aCols = a.data.GetLength(1);
             int bRows = b.data.GetLength(0);
             int bCols = b.data.GetLength(1);
-
-            if (aCols != bRows)
-                throw new InvalidOperationException("Несовместимые размеры для матричного умножения");
 
             double[,] result = new double[aRows, bCols];
 
